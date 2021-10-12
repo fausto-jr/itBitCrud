@@ -1,6 +1,6 @@
 # itBitCrud
 
-Asp.Net WebApi, Angular e SQL Server
+Asp.Net WebApi, Angular 12 e SQL Server
 User Crud
 
 ![image](https://user-images.githubusercontent.com/62676471/137021863-779a4799-993d-4576-971a-879e646777e7.png)
