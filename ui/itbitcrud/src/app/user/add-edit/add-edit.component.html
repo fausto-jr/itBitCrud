@@ -1,0 +1,92 @@
+
+<form [formGroup]="form" >
+
+
+<div class="form-group row">
+    <div class="form-group">
+    <label class="col-sm-2 col-form-label">Usuário</label>
+    <div class="col-sm-10">
+        <input formControlName="Nome" type="text" class="form-control" [(ngModel)] = "Nome" placeholder="Nome do Usuário" > 
+         <div *ngIf="f.Nome.touched && f.Nome.invalid" class="alert alert-danger">
+        <div *ngIf="f.Nome.errors && f.Nome.errors.required">Nome é um campo obrigatório.</div>
+        <div *ngIf="f.Nome.errors && f.Nome.errors.minlength">Nome deve ter mais de 3 caracteres.</div>
+
+        </div>
+    </div>
+    </div>
+    <div class="form-group">
+    <label class="col-sm-2 col-form-label">Data de Nascimento</label>
+    <div class="col-sm-10">
+        <input formControlName="DataNascimento" type="date" class="form-control" [(ngModel)] = "DataNascimento "> 
+        <div *ngIf="f.DataNascimento.touched && f.DataNascimento.invalid" class="alert alert-danger">
+            <div *ngIf="f.DataNascimento.errors && f.DataNascimento.errors.required">Data de Nascimento é um campo obrigatório.</div>
+         
+        </div>
+    </div>
+    
+    </div>
+    <div class="form-group">
+       
+        <label class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+            <input formControlName="Email" type="email" class="form-control" [(ngModel)] = "Email" placeholder="email@example.com" > 
+            <div *ngIf="f.Email.touched && f.Email.invalid" class="alert alert-danger">
+                <div *ngIf="f.Email.errors && f.Email.errors.required">Email é um campo obrigatório.</div>
+                <div *ngIf="f.Email.errors && f.Email.errors.email">Por favor, digitem um email válido.</div>
+ 
+            </div>
+        </div>
+        
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 col-form-label">Senha</label>
+        <div class="col-sm-10">
+            <input formControlName="Senha" type="password" class="form-control" [(ngModel)] = "Senha" placeholder="Senha"> 
+            <div *ngIf="f.Senha.touched && f.Senha.invalid" class="alert alert-danger">
+                <div *ngIf="f.Senha.errors && f.Senha.errors.required">Senha é um campo obrigatório.</div>
+                <div *ngIf="f.Senha.errors && f.Senha.errors.minlength">Senha deve ter mais de 6 caracteres.</div>
+            </div>
+        </div>
+    </div>
+   
+    <div class="form-group">
+        <label class="col-sm-2 col-form-label">Sexo</label>
+        <div class="col-sm-10">
+            <select formControlName="SexoId" class="form-control" [(ngModel)] = "SexoId">
+                <option>Escolher</option>
+                <option *ngFor="let sexo of SexoList" value="{{sexo.SexoId}}">{{sexo.Descricao}}</option>
+             </select>
+             <div *ngIf="f.SexoId.touched && f.SexoId.invalid" class="alert alert-danger">
+                <div *ngIf="f.SexoId.errors && f.SexoId.errors.required">Sexo é um campo obrigatório.</div>
+             </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 col-form-label">Status</label>
+        <div class="col-sm-10">
+            <select formControlName="Ativo" class="form-control" [(ngModel)] = "Ativo">
+                <option selected>Escolher</option>
+                <option value="1">Ativo</option>
+                <option value="0">Inativo</option>
+
+              </select>
+            <div *ngIf="f.Ativo.touched && f.Ativo.invalid" class="alert alert-danger">
+                <div *ngIf="f.Ativo.errors && f.Ativo.errors.required">Status é um campo obrigatório.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <!--<button class="btn btn-primary" type="submit" *ngIf="user.UsuarioId==0" class="btn btn-primary mt-3" >Adicionar</button>
+        <button class="btn btn-primary" type="submit" *ngIf="user.UsuarioId!=0" class="btn btn-primary mt-3" >Editar</button>--> 
+
+       <button (click)="addUser()" *ngIf="user.UsuarioId==0 && !f.Ativo.errors" class="btn btn-primary mt-3" >Adicionar</button>
+        <button (click)="updateUser()" *ngIf="user.UsuarioId!=0 && !f.Ativo.errors" class="btn btn-primary mt-3">Editar</button>
+    </div>
+    
+</div>
+</form>
+
+
+
+
